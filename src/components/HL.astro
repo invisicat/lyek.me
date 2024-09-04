@@ -1,0 +1,10 @@
+---
+const { href } = Astro.props;
+---
+
+<a
+  href={href}
+  class="transition-all duration-300 bg-gradient-to-b from-red-400 to-amber-500 bg-[length:6px_6px] bg-[6px_100%] bg-repeat-x hover:bg-[length:6px_55px] text-rose-800 font-semibold"
+>
+  <slot />
+</a>

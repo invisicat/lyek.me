@@ -1,16 +1,32 @@
 ---
-
+import HL from "../components/HL.astro";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Astro</title>
+  </head>
+  <body>
+    <div class="container mx-auto">
+      <h1 class="text-4xl p-3">Hi! I'm Andy</h1>
+      <div id="desc" class="max-w-screen-lg flex flex-col space-y-3">
+        <p class="text-lg">
+          I'm a first year SWE/MechE student at Stanford University. I love
+          designing and building backend architecture.
+        </p>
+        <p class="text-lg">
+          Currently freelancing as a full-stack developer. Previous IHeart and
+          ModestoPD.
+        </p>
+        <p class="text-lg">
+          In my free time I enjoy film making and photography, check it out
+          <HL href="https://google.com">here</HL>.
+        </p>
+      </div>
+    </div>
+  </body>
 </html>
