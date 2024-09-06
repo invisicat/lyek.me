@@ -1,5 +1,8 @@
 ---
 import HL from "../components/HL.astro";
+import Project from "../components/projects/Project.astro";
+import { Projects } from "../lib/projects";
+import { LINKEDIN_URL, GITHUB_URL } from "../lib/constants";
 ---
 
 <html lang="en">
@@ -10,23 +13,50 @@ import HL from "../components/HL.astro";
     <meta name="generator" content={Astro.generator} />
     <title>Astro</title>
   </head>
-  <body>
-    <div class="container mx-auto">
-      <h1 class="text-4xl p-3">Hi! I'm Andy</h1>
-      <div id="desc" class="max-w-screen-lg flex flex-col space-y-3">
-        <p class="text-lg">
-          I'm a first year SWE/MechE student at Stanford University. I love
-          designing and building backend architecture.
-        </p>
-        <p class="text-lg">
-          Currently freelancing as a full-stack developer. Previous IHeart and
-          ModestoPD.
-        </p>
-        <p class="text-lg">
-          In my free time I enjoy film making and photography, check it out
-          <HL href="https://google.com">here</HL>.
-        </p>
+  <body class="h-screen flex flex-col">
+    <div id="shell" class="h-max flex flex-row">
+      <div class="container mx-auto p-6">
+        <section>
+          <h1 class="text-4xl py-3">Hi! I'm Andy</h1>
+          <div id="desc" class="max-w-screen-lg flex flex-col space-y-3">
+            <p class="text-lg">
+              I'm a first year SWE/MechE student at Stanford University. I love
+              designing and building backend architecture.
+            </p>
+            <p class="text-lg">
+              Currently freelancing as a full-stack developer. Previous IHeart
+              and ModestoPD.
+            </p>
+            <p class="text-lg">
+              In my free time I enjoy film making and photography, check it out
+              <HL href="https://google.com">here</HL>.
+            </p>
+          </div>
+          <div class="flex flex-row space-x-4 my-3">
+            <HL href={LINKEDIN_URL}>linkedin</HL>
+            <HL href={GITHUB_URL}>github</HL>
+            <HL href="/resume.pdf">resume</HL>
+          </div>
+        </section>
+        <section class="max-w-screen-md py-3">
+          <span class="flex flex-row justify-between">
+            <h1 class="text-2xl py-3">projects</h1>
+            <span class="self-center"><HL>view more</HL></span>
+          </span>
+          {
+            Projects.map((c) => (
+              <Project
+                title={c.title}
+                description={c.description}
+                link={c.link}
+              />
+            ))
+          }
+        </section>
       </div>
     </div>
   </body>
+  <footer class="p-3">
+    <p class="text-right">Made with 💖. &copy;Invisicat</p>
+  </footer>
 </html>
