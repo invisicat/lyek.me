@@ -52,11 +52,10 @@ export const Projects: ProjectProps[] = [
       "Lightweight Velocity plugin that syncs Discord roles with in-game roles.",
   },
   {
-    title: "Axolotl Ponds",
-    link: "https://github.com/invisicat/AxolotlPonds",
-    icons: ["hugeicons:java"],
-    minecraft: true,
+    title: "Webstore Scraper",
+    link: "https://github.com/invisicat/rust-bestbuy-scraper",
+    icons: ["devicon-plain:rust", "mdi:database"],
     description:
-      "A Minecraft plugin for MMORPG that allows you to create ponds for axolotls to spawn in.",
-  }
+      "App that scraped Bestbuy's website for RTX 3080s. Utilized a scaper, webhooks, and cron jobs. ",
+  },
 ];
