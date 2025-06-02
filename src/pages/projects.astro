@@ -1,0 +1,129 @@
+---
+import BaseLayout from "../layouts/Layout.astro";
+import Project from "../components/projects/Project.astro";
+import ProjectSection from "../components/projects/ProjectSection.astro";
+import { Projects, type ProjectProps } from "../lib/projects";
+import { Icon } from "astro-icon/components";
+import BaseButton from "../components/base/BaseButton.astro";
+---
+
+<BaseLayout>
+  <!-- Navigation Links -->
+  <nav
+    class="flex flex-col gap-4 md:flex-row md:gap-8 sticky top-0 py-4 bg-white dark:bg-dark"
+  >
+    <BaseButton
+      href="#general"
+      class="text-gray-700 hover:text-gray-900 font-medium"
+    >
+      General Projects
+    </BaseButton>
+    <BaseButton
+      href="#web"
+      class="text-gray-700 hover:text-gray-900 font-medium"
+    >
+      Web Development
+    </BaseButton>
+    <BaseButton
+      href="#games"
+      class="text-gray-700 hover:text-gray-900 font-medium"
+    >
+      Game Development
+    </BaseButton>
+  </nav>
+  <section id="legend">
+    <div>
+      <div class="flex items-center gap-4 text-sm my-8 text-gray-600">
+        <div class="flex items-center">
+          <Icon
+            name="tabler:star-filled"
+            width="16"
+            height="16"
+            class="text-[oklch(0.8485_0.1529_102.18)]"
+          />
+          <span class="ml-1">- Recent projects</span>
+        </div>
+        <div class="flex items-center">
+          <Icon
+            name="tabler:device-mobile"
+            width="16"
+            height="16"
+            class="text-[oklch(0.65_0.15_250)]"
+          />
+          <span class="ml-1">- Mobile projects</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="flex flex-col gap-16">
+    <ProjectSection
+      title="General Projects"
+      id="general"
+      description="A collection of projects I've created over the years from my hobbies."
+    >
+      {
+        Projects.filter(
+          (project: ProjectProps) => project.project_type === "general"
+        )
+          .sort((a, b) => (b.recent ? 1 : 0) - (a.recent ? 1 : 0))
+          .map((project: ProjectProps) => (
+            <Project
+              title={project.title}
+              description={project.description}
+              link={project.link}
+              tags={project.tags}
+              recent={project.recent}
+              variant={project.variant}
+              link_type={project.link_type}
+            />
+          ))
+      }
+    </ProjectSection>
+    <ProjectSection
+      title="Web Development"
+      id="web"
+      description="Projects I've built for the web using React, Tailwind, Typescript, and basically any web technologies."
+    >
+      {
+        Projects.filter(
+          (project: ProjectProps) => project.project_type === "web"
+        )
+          .sort((a, b) => (b.recent ? 1 : 0) - (a.recent ? 1 : 0))
+          .map((project: ProjectProps) => (
+            <Project
+              title={project.title}
+              description={project.description}
+              link={project.link}
+              tags={project.tags}
+              recent={project.recent}
+              variant={project.variant}
+              link_type={project.link_type}
+            />
+          ))
+      }
+    </ProjectSection>
+    <ProjectSection
+      title="Game Development"
+      id="games"
+      description="Mods, plugins, servers, and other game projects that I've worked on."
+    >
+      {
+        Projects.filter(
+          (project: ProjectProps) => project.project_type === "game"
+        )
+          .sort((a, b) => (b.recent ? 1 : 0) - (a.recent ? 1 : 0))
+          .map((project: ProjectProps) => (
+            <Project
+              title={project.title}
+              description={project.description}
+              link={project.link}
+              tags={project.tags}
+              recent={project.recent}
+              variant={project.variant}
+              link_type={project.link_type}
+            />
+          ))
+      }
+    </ProjectSection>
+  </div>
+</BaseLayout>

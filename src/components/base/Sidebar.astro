@@ -1,0 +1,116 @@
+---
+import BaseNav from "./BaseNav.astro";
+import BaseButton from "./BaseButton.astro";
+import { Icon } from "astro-icon/components";
+---
+
+<div class="flex flex-col py-8 md:py-16 mx-4 md:mx-16">
+  <img
+    src="/signature.svg"
+    alt="Andy Lyek signature"
+    class="w-12 h-12 mx-auto transition-all duration-300 ease-in-out hover:[filter:invert(45%)_sepia(100%)_saturate(2000%)_hue-rotate(310deg)_brightness(90%)_contrast(90%)]"
+    onclick="window.location.href='/'"
+  />
+  <BaseNav />
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 w-full mt-8">
+    <BaseButton
+      href="https://github.com/invisicat"
+      target="_blank"
+      class="text-gray-600"
+    >
+      <Icon name="tabler:brand-github" width="24" height="24" />
+      <span class="ml-1">GitHub</span>
+    </BaseButton>
+    <BaseButton
+      href="https://www.linkedin.com/in/andy-lyek/"
+      target="_blank"
+      class="text-gray-600"
+    >
+      <Icon name="tabler:brand-linkedin" width="24" height="24" />
+      <span class="ml-1">LinkedIn</span>
+    </BaseButton>
+    <BaseButton
+      href="https://ko-fi.com/riceontopp"
+      target="_blank"
+      class="text-gray-600"
+    >
+      <Icon name="tabler:coffee" width="24" height="24" />
+      <span class="ml-1">Ko-fi</span>
+    </BaseButton>
+    <BaseButton href="mailto:andy@lyek.me" class="text-gray-600">
+      <Icon name="tabler:mail" width="24" height="24" />
+      <span class="ml-1">Email</span>
+    </BaseButton>
+  </div>
+  <div class="mt-8">
+    <!-- Buttons for switching between light and dark mode and system mode -->
+    <div class="flex gap-2 justify-center border-t border-gray-200 pt-4">
+      <button
+        id="system"
+        class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700"
+        title="System Mode"
+      >
+        <Icon name="tabler:device-desktop" width="24" height="24" />
+      </button>
+      <button
+        id="light"
+        class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700"
+        title="Light Mode"
+      >
+        <Icon name="tabler:sun" width="24" height="24" />
+      </button>
+      <button
+        id="dark"
+        class="p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700"
+        title="Dark Mode"
+      >
+        <Icon name="tabler:moon" width="24" height="24" />
+      </button>
+    </div>
+
+    <script>
+      // Check for saved theme preference or use system default
+      const theme = (localStorage.getItem("theme") || "system") as
+        | "light"
+        | "dark"
+        | "system";
+
+      // Function to update theme
+      function updateTheme(mode: "light" | "dark" | "system") {
+        if (mode === "dark") {
+          document.documentElement.classList.add("dark");
+        } else if (mode === "light") {
+          document.documentElement.classList.remove("dark");
+        } else if (mode === "system") {
+          if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+            document.documentElement.classList.add("dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+          }
+        }
+        localStorage.setItem("theme", mode);
+      }
+
+      // Set initial theme
+      updateTheme(theme);
+
+      // Add click handlers
+      const lightButton = document.getElementById("light");
+      const darkButton = document.getElementById("dark");
+      const systemButton = document.getElementById("system");
+
+      lightButton?.addEventListener("click", () => updateTheme("light"));
+      darkButton?.addEventListener("click", () => updateTheme("dark"));
+      systemButton?.addEventListener("click", () => updateTheme("system"));
+
+      // Listen for system theme changes
+      window
+        .matchMedia("(prefers-color-scheme: dark)")
+        .addEventListener("change", (e) => {
+          if (localStorage.getItem("theme") === "system") {
+            updateTheme("system");
+          }
+        });
+    </script>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+---
+import { Icon } from "astro-icon/components";
+import BaseButton from "./BaseButton.astro";
+---
+
+<nav class="mt-8">
+  <div class="flex flex-col space-y-6">
+    <BaseButton href="/projects">
+      <Icon name="tabler:folders-filled" width="28" height="28" />
+      <span>Projects</span>
+    </BaseButton>
+    <BaseButton href="/AndyLyek_Resume.pdf" target="_blank">
+      <Icon name="tabler:file-cv" width="28" height="28" />
+      <span>CV</span>
+    </BaseButton>
+    <BaseButton href="/coming-soon">
+      <Icon name="tabler:notebook" width="28" height="28" />
+      <span>Blog</span>
+    </BaseButton>
+  </div>
+</nav>
