@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/Layout.astro";
 import Project from "../components/projects/Project.astro";
 import ProjectSection from "../components/projects/ProjectSection.astro";
-import { Projects, type ProjectProps } from "../lib/projects";
+import { Projects as projectsList, type ProjectProps } from "../lib/projects";
 import { Icon } from "astro-icon/components";
 import BaseButton from "../components/base/BaseButton.astro";
 ---
@@ -62,9 +62,8 @@ import BaseButton from "../components/base/BaseButton.astro";
       description="A collection of projects I've created over the years from my hobbies."
     >
       {
-        Projects.filter(
-          (project: ProjectProps) => project.project_type === "general"
-        )
+        projectsList
+          .filter((project: ProjectProps) => project.project_type === "general")
           .sort((a, b) => (b.recent ? 1 : 0) - (a.recent ? 1 : 0))
           .map((project: ProjectProps) => (
             <Project
@@ -85,9 +84,8 @@ import BaseButton from "../components/base/BaseButton.astro";
       description="Projects I've built for the web using React, Tailwind, Typescript, and basically any web technologies."
     >
       {
-        Projects.filter(
-          (project: ProjectProps) => project.project_type === "web"
-        )
+        projectsList
+          .filter((project: ProjectProps) => project.project_type === "web")
           .sort((a, b) => (b.recent ? 1 : 0) - (a.recent ? 1 : 0))
           .map((project: ProjectProps) => (
             <Project
@@ -108,9 +106,8 @@ import BaseButton from "../components/base/BaseButton.astro";
       description="Mods, plugins, servers, and other game projects that I've worked on."
     >
       {
-        Projects.filter(
-          (project: ProjectProps) => project.project_type === "game"
-        )
+        projectsList
+          .filter((project: ProjectProps) => project.project_type === "game")
           .sort((a, b) => (b.recent ? 1 : 0) - (a.recent ? 1 : 0))
           .map((project: ProjectProps) => (
             <Project
