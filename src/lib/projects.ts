@@ -42,7 +42,7 @@ export const Projects: ProjectProps[] = [
     icons: ["hugeicons:java"],
     minecraft: true,
     description:
-      "Example implementation of how you're able to use reflection to dynamically register all events which allow you to use generic parameters as event handlers",
+      "Example implementation of reflection to dynamically register events with generic parameters as event handlers",
     description_short:
       "Dynamic event registration system using reflection for Minecraft",
     project_type: "game",
@@ -53,7 +53,7 @@ export const Projects: ProjectProps[] = [
     link: "https://github.com/invisicat/SimpleUdpNetwork",
     icons: ["hugeicons:java"],
     description:
-      "Simple echo server implementation that listens on a port and echoes back the packets it receives to the client that sent it",
+      "Echo server implementation that echoes back the packets it receives to the client",
     description_short: "Basic UDP echo server implementation",
     project_type: "general",
     variant: "short",
@@ -96,7 +96,7 @@ export const Projects: ProjectProps[] = [
     icons: [""],
     recent: true,
     description:
-      "A network of servers that are used to host various services. Currently, it's used to host a Minecraft server, a Discord bot, and a website.",
+      "My Minecraft server with over 200+ members. Self maintained infra with Docker, Grafana, Pterodactyl etc.",
     project_type: "game",
     variant: "long",
   },
