@@ -1,64 +1,50 @@
 ---
-import HL from "../components/HL.astro";
+import BaseLayout from "../layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
 import Project from "../components/projects/Project.astro";
-import { Projects } from "../lib/projects";
-import { LINKEDIN_URL, GITHUB_URL } from "../lib/constants";
+import { Projects, type ProjectProps } from "../lib/projects";
+import BaseButton from "../components/base/BaseButton.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Andy Lyek - Software Engineer</title>
-  </head>
-  <body class="h-screen flex flex-col">
-    <div id="shell" class="h-max flex flex-row">
-      <div class="container mx-auto p-12">
-        <section>
-          <h1 class="text-4xl py-3">Hi! I'm Andy</h1>
-          <div id="desc" class="max-w-screen-lg flex flex-col space-y-3">
-            <p class="text-lg">
-              EE/CS student at Stanford University. I love designing and
-              building backend architecture.
-            </p>
-            <p class="text-lg">
-              Currently freelancing as a full-stack developer. Previous IHeart
-              and ModestoPD.
-            </p>
-            <p class="text-lg">
-              In my free time I enjoy film making and photography, check it out
-              <HL href="https://photos.lyek.me">here</HL>.
-            </p>
-          </div>
-          <div class="flex flex-row space-x-4 my-3">
-            <HL href={LINKEDIN_URL}>linkedin</HL>
-            <HL href={GITHUB_URL}>github</HL>
-            <HL href="/AndyLyek_Resume.pdf">resume</HL>
-          </div>
-        </section>
-        <section class="max-w-screen-md py-3">
-          <span class="flex flex-row justify-between">
-            <h1 class="text-2xl py-3">projects</h1>
-            <span class="self-center"
-              ><HL href="https://github.com/invisicat">view more</HL></span
-            >
-          </span>
-          {
-            Projects.map((c) => (
-              <Project
-                title={c.title}
-                description={c.description}
-                link={c.link}
-              />
-            ))
-          }
-        </section>
+<BaseLayout>
+  <div class="flex flex-col">
+    <section id="hero" class="flex flex-col gap-4 my-4">
+      <h1 class="text-4xl font-bold leading-relaxed">Hello, I'm Andy!</h1>
+      <h2 class="text-2xl text-gray-600 text-ltgray dark:text-grayer">
+        EE/CS student at Stanford
+      </h2>
+    </section>
+    <section id="about" class="leading-relaxed font-sans flex flex-col gap-5">
+      <p>
+        I love designing and building backend systems. I make all sorts of
+        software, from web, mobile, and desktop apps to backend infrastructures.
+      </p>
+      <p>
+        Currently, I'm building a web app that integrates with low level
+        hardware (Arduino) for budget real-time video streaming. You can follow
+        with my progress on my GitHub!
+      </p>
+    </section>
+    <section class="my-16">
+      <h2 class="text-2xl font-bold mb-8">Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {
+          Projects.slice(0, 4).map((project: ProjectProps) => (
+            <Project
+              title={project.title}
+              description={project.description}
+              link={project.link}
+              variant="short"
+            />
+          ))
+        }
       </div>
-    </div>
-  </body>
-  <footer class="p-3">
-    <p class="text-right">Made with 💖. &copy;Invisicat</p>
-  </footer>
-</html>
+      <div class="mt-8">
+        <BaseButton href="/projects">
+          <span class="border-b border-gray-300"> See more projects </span>
+          <Icon name="tabler:arrow-right" width="20" height="20" />
+        </BaseButton>
+      </div>
+    </section>
+  </div>
+</BaseLayout>
