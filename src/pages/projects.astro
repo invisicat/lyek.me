@@ -1,10 +1,26 @@
 ---
 import BaseLayout from "../layouts/Layout.astro";
 import Project from "../components/projects/Project.astro";
+import {
+  type Project as ProjectProps,
+  type ProjectType,
+  getProjects,
+} from "../lib/notion";
 import ProjectSection from "../components/projects/ProjectSection.astro";
-import { Projects as projectsList, type ProjectProps } from "../lib/projects";
 import { Icon } from "astro-icon/components";
 import BaseButton from "../components/base/BaseButton.astro";
+
+const projectsList = await getProjects();
+
+const projects = projectsList.sort(
+  (a, b) => (b.recent ? 1 : 0) - (a.recent ? 1 : 0)
+);
+
+const withProject = (projectType: ProjectType) => {
+  return projects.filter(
+    (project: ProjectProps) => project.project_type === projectType
+  );
+};
 ---
 
 <BaseLayout>
@@ -61,66 +77,21 @@ import BaseButton from "../components/base/BaseButton.astro";
       id="general"
       description="A collection of projects I've created over the years from my hobbies."
     >
-      {
-        projectsList
-          .filter((project: ProjectProps) => project.project_type === "general")
-          .sort((a, b) => (b.recent ? 1 : 0) - (a.recent ? 1 : 0))
-          .map((project: ProjectProps) => (
-            <Project
-              title={project.title}
-              description={project.description}
-              link={project.link}
-              tags={project.tags}
-              recent={project.recent}
-              variant={project.variant}
-              link_type={project.link_type}
-            />
-          ))
-      }
+      {withProject("general").map((c) => <Project {...c} />)}
     </ProjectSection>
     <ProjectSection
       title="Web Development"
       id="web"
       description="Projects I've built for the web using React, Tailwind, Typescript, and basically any web technologies."
     >
-      {
-        projectsList
-          .filter((project: ProjectProps) => project.project_type === "web")
-          .sort((a, b) => (b.recent ? 1 : 0) - (a.recent ? 1 : 0))
-          .map((project: ProjectProps) => (
-            <Project
-              title={project.title}
-              description={project.description}
-              link={project.link}
-              tags={project.tags}
-              recent={project.recent}
-              variant={project.variant}
-              link_type={project.link_type}
-            />
-          ))
-      }
+      {withProject("web").map((c) => <Project {...c} />)}
     </ProjectSection>
     <ProjectSection
       title="Game Development"
       id="games"
       description="Mods, plugins, servers, and other game projects that I've worked on."
     >
-      {
-        projectsList
-          .filter((project: ProjectProps) => project.project_type === "game")
-          .sort((a, b) => (b.recent ? 1 : 0) - (a.recent ? 1 : 0))
-          .map((project: ProjectProps) => (
-            <Project
-              title={project.title}
-              description={project.description}
-              link={project.link}
-              tags={project.tags}
-              recent={project.recent}
-              variant={project.variant}
-              link_type={project.link_type}
-            />
-          ))
-      }
+      {withProject("game").map((c) => <Project {...c} />)}
     </ProjectSection>
   </div>
 </BaseLayout>

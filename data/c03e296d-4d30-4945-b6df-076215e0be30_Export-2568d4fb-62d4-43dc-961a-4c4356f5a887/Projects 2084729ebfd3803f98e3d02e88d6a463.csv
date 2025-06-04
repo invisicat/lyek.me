@@ -1,0 +1,14 @@
+﻿Name,Description,Link,link_type,Recent,project_type,tags,icons
+KeepIt,iOS app that keeps track of your reels,https://github.com/invisicat/KeepIt,github,Yes,general,"Mobile, Swift, iOS",hugeicons:swift
+Sprinkl,"Native macOS Pomodoro app built with Swift, lock in",https://github.com/invisicat/Sprinkl,github,Yes,general,"Mobile, Swift, macOS",hugeicons:swift
+Stanford CamSA,Website for Stanford's Cambodian Student Association. Built with HTML/CSS.,https://camsa.vercel.app,website,Yes,web,,devicon-plain:react
+Frostless Network,"My Minecraft server with over 200+ members. Self maintained infra with Docker, Grafana, Pterodactyl etc.",https://frostless.network,website,Yes,game,,
+PvPToggle,Minecraft plugin that toggles prevents combat logging,https://github.com/invisicat/PvPToggle,github,No,game,,hugeicons:java
+Axolotl Ponds,MMORPG Minecraft plugin that allows you to create ponds for axolotls to spawn in.,https://github.com/invisicat/AxolotlPonds,github,No,game,,hugeicons:java
+Discord Velocity Sync,Lightweight Velocity plugin that syncs Discord roles with in-game roles.,https://github.com/invisicat/DiscordVelocitySync,github,No,game,,hugeicons:java
+Webstore Scraper,"App that scraped Bestbuy's website for RTX 3080s. Utilized a scaper, webhooks, and cron jobs.",https://github.com/invisicat/rust-bestbuy-scraper,github,No,web,,devicon-plain:rust;mdi:database
+LogSnag4J,Wrapper for LogSnag that allows for easy integration with Java applications,https://github.com/invisicat/LogSnag4J,github,No,general,,hugeicons:java
+Simple UDP Network,Echo server implementation that echoes back the packets it receives to the client,https://github.com/invisicat/SimpleUdpNetwork,github,No,general,,hugeicons:java
+Custom Reflection Listeners,Example implementation of reflection to dynamically register events with generic parameters as event handlers,https://github.com/invisicat/BukkitGenericListeners,github,No,game,,hugeicons:java
+Nozuru,"A simple, fast, and efficient backend service used to build artifacts and serve Javadocs. Made with Rust 🦀.",https://github.com/invisicat/Nozuru,github,No,general,,hugeicons:java
+RiceStats,Tracks Minecraft statistics with InfluxDB for timescale analytics as a Spigot plugin,https://github.com/invisicat/RiceStats,github,No,game,,hugeicons:java;devicon-plain:grafana-wordmark

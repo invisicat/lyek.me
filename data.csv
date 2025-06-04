@@ -1,0 +1,14 @@
+title,link,link_type,icons,description,description_short,project_type,variant,minecraft,recent,tags
+RiceStats,https://github.com/invisicat/RiceStats,github,"hugeicons:java;devicon-plain:grafana-wordmark","Tracks Minecraft statistics with InfluxDB for timescale analytics as a Spigot plugin","Tracks Minecraft statistics with InfluxDB for timescale analytics as a Spigot plugin",game,short,,,
+Nozuru,https://github.com/invisicat/Nozuru,,hugeicons:java,"A simple, fast, and efficient backend service used to build artifacts and serve Javadocs. Made with Rust 🦀.","Backend service for building artifacts and serving Javadocs",general,short,,,
+Custom Reflection Listeners,https://github.com/invisicat/BukkitGenericListeners,,hugeicons:java,"Example implementation of reflection to dynamically register events with generic parameters as event handlers","Dynamic event registration system using reflection for Minecraft",game,short,true,,
+Simple UDP Network,https://github.com/invisicat/SimpleUdpNetwork,,hugeicons:java,"Echo server implementation that echoes back the packets it receives to the client","Basic UDP echo server implementation",general,short,,,
+LogSnag4J,https://github.com/invisicat/LogSnag4J,,hugeicons:java,"Wrapper for LogSnag that allows for easy integration with Java applications","Java wrapper for LogSnag integration",general,short,,,
+Discord Velocity Sync,https://github.com/invisicat/DiscordVelocitySync,,hugeicons:java,"Lightweight Velocity plugin that syncs Discord roles with in-game roles.","Discord role synchronization for Minecraft servers",game,short,true,,
+Webstore Scraper,https://github.com/invisicat/rust-bestbuy-scraper,,devicon-plain:rust;mdi:database,"App that scraped Bestbuy's website for RTX 3080s. Utilized a scaper, webhooks, and cron jobs.","BestBuy RTX 3080 stock tracker with webhooks",web,short,,,
+Frostless Network,https://frostless.network,website,,"My Minecraft server with over 200+ members. Self maintained infra with Docker, Grafana, Pterodactyl etc.",,game,long,,true,
+Stanford CamSA,https://camsa.vercel.app,website,devicon-plain:react,"Website for Stanford's Cambodian Student Association. Built with HTML/CSS.",,web,short,,true,
+Axolotl Ponds,https://github.com/invisicat/AxolotlPonds,github,hugeicons:java,"MMORPG Minecraft plugin that allows you to create ponds for axolotls to spawn in.",,game,short,,,
+Sprinkl,https://github.com/invisicat/Sprinkl,github,hugeicons:swift,"Native macOS Pomodoro app built with Swift, lock in",,general,short,,true,
+KeepIt,https://github.com/invisicat/KeepIt,github,hugeicons:swift,"iOS app that keeps track of your reels",,general,short,,true,"iOS;Swift;mobile"
+PvPToggle,https://github.com/invisicat/PvPToggle,github,hugeicons:java,"Minecraft plugin that toggles prevents combat logging",,game,short,,,

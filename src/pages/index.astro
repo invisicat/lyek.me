@@ -2,8 +2,10 @@
 import BaseLayout from "../layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 import Project from "../components/projects/Project.astro";
-import { Projects, type ProjectProps } from "../lib/projects";
 import BaseButton from "../components/base/BaseButton.astro";
+import { getProjects, type Project as ProjectType } from "../lib/notion";
+
+const projects = (await getProjects()).slice(0, 4);
 ---
 
 <BaseLayout>
@@ -28,16 +30,7 @@ import BaseButton from "../components/base/BaseButton.astro";
     <section class="my-16">
       <h2 class="text-2xl font-bold mb-8">Projects</h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {
-          Projects.slice(0, 4).map((project: ProjectProps) => (
-            <Project
-              title={project.title}
-              description={project.description}
-              link={project.link}
-              variant="short"
-            />
-          ))
-        }
+        {projects.map((p: ProjectType) => <Project {...p} />)}
       </div>
       <div class="mt-8">
         <BaseButton href="/projects">
