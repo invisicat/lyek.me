@@ -106,7 +106,7 @@ import { Icon } from "astro-icon/components";
       // Listen for system theme changes
       window
         .matchMedia("(prefers-color-scheme: dark)")
-        .addEventListener("change", (e) => {
+        .addEventListener("change", () => {
           if (localStorage.getItem("theme") === "system") {
             updateTheme("system");
           }
