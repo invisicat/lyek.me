@@ -19,6 +19,7 @@ export interface Project {
   tags: string[];
   icons: string[];
   variant: "Short" | "Long";
+  featured: boolean;
   description_short: string;
 }
 
@@ -43,6 +44,7 @@ export async function getProjects(): Promise<Project[]> {
         variant: properties.Variant.select?.name || "Short",
         description_short:
           properties.description_short.rich_text[0]?.plain_text || "",
+        featured: properties.featured.checkbox || false,
       };
     });
   } catch (error) {

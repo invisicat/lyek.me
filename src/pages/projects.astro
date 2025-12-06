@@ -10,6 +10,9 @@ import ProjectSection from "../components/projects/ProjectSection.astro";
 import { Icon } from "astro-icon/components";
 import BaseButton from "../components/base/BaseButton.astro";
 
+// Mark this page as dynamic so it fetches from Notion at runtime
+export const prerender = false;
+
 const projectsList = await getProjects();
 
 const projects = projectsList.sort(

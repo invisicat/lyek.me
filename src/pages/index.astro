@@ -5,7 +5,12 @@ import Project from "../components/projects/Project.astro";
 import BaseButton from "../components/base/BaseButton.astro";
 import { getProjects, type Project as ProjectType } from "../lib/notion";
 
-const projects = (await getProjects()).slice(0, 4);
+// Mark this page as dynamic so it fetches from Notion at runtime
+export const prerender = false;
+
+const projects = (await getProjects())
+  .filter((p: ProjectType) => p.featured)
+  .slice(0, 4);
 ---
 
 <BaseLayout>
