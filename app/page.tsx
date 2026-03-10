@@ -3,7 +3,11 @@ import { ArrowRight } from "lucide-react";
 import ProjectCard from "@/components/projects/ProjectCard";
 import WipSection from "@/components/wip/WipSection";
 import { mergeSiteContent } from "@/lib/cmsDefaults";
-import { getProjects, getSiteContentEntries, getWipProjects } from "@/lib/convex";
+import {
+  getProjects,
+  getSiteContentEntries,
+  getWipProjects,
+} from "@/lib/convex";
 
 export const dynamic = "force-dynamic";
 
@@ -47,7 +51,9 @@ export default async function Home() {
       </section>
 
       <section className="stagger-5 animate-fade-in-up mt-20">
-        <h2 className="mb-10 font-serif text-3xl">{content["home.projectsHeading"]}</h2>
+        <h2 className="mb-10 font-serif text-3xl">
+          {content["home.projectsHeading"]}
+        </h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
           {projects.map((project) => (
             <ProjectCard key={project._id ?? project.name} project={project} />
@@ -64,6 +70,19 @@ export default async function Home() {
             <ArrowRight size={16} />
           </Link>
         </div>
+      </section>
+
+      <section className="stagger-6 animate-fade-in-up mt-20">
+        <h2 className="mb-4 font-serif text-3xl">Get in touch</h2>
+        <p className="leading-relaxed text-(--text-secondary)">
+          Have something in mind or just want to say hi? Reach me at{" "}
+          <a
+            href="mailto:andy@lyek.me"
+            className="text-(--accent) underline decoration-(--accent)/30 underline-offset-4 transition-colors duration-200 hover:decoration-(--accent)"
+          >
+            andy@lyek.me
+          </a>
+        </p>
       </section>
     </div>
   );
