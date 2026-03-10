@@ -1,0 +1,141 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #fafafa;
+  --bg-surface: #f0f0f0;
+  --text: #171717;
+  --text-secondary: #525252;
+  --text-tertiary: #a3a3a3;
+  --border: #e5e5e5;
+  --accent: oklch(0.55 0.1 85);
+  --accent-dim: oklch(0.45 0.08 85);
+}
+
+.dark {
+  --bg: #0a0a0a;
+  --bg-surface: #161616;
+  --text: #f5f5f5;
+  --text-secondary: #a3a3a3;
+  --text-tertiary: #6b6b6b;
+  --border: #2a2a2a;
+  --accent: oklch(0.82 0.14 85);
+  --accent-dim: oklch(0.6 0.1 85);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
+}
+
+.font-serif {
+  font-family: "Instrument Serif", ui-serif, Georgia, serif;
+}
+
+.font-mono {
+  font-family: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+@keyframes fade-in-up {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out both;
+}
+
+.stagger-1 {
+  animation-delay: 0ms;
+}
+.stagger-2 {
+  animation-delay: 80ms;
+}
+.stagger-3 {
+  animation-delay: 160ms;
+}
+.stagger-4 {
+  animation-delay: 240ms;
+}
+.stagger-5 {
+  animation-delay: 320ms;
+}
+.stagger-6 {
+  animation-delay: 400ms;
+}
+.stagger-7 {
+  animation-delay: 480ms;
+}
+.stagger-8 {
+  animation-delay: 560ms;
+}
+
+.sidebar-logo img {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.dark .sidebar-logo-img {
+  box-shadow: 0 0 0 1px var(--border);
+}
+
+.sidebar-logo:hover img {
+  animation: logo-wiggle 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes logo-wiggle {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  20% {
+    transform: scale(1.12) rotate(-6deg);
+  }
+  40% {
+    transform: scale(1.12) rotate(6deg);
+  }
+  60% {
+    transform: scale(1.08) rotate(-3deg);
+  }
+  80% {
+    transform: scale(1.05) rotate(2deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-logo img {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+.admin-checkbox {
+  accent-color: var(--accent);
+}
+
+.admin-toast {
+  position: sticky;
+  top: 0.75rem;
+  z-index: 20;
+  border: 1px solid;
+  border-radius: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  backdrop-filter: blur(8px);
+}

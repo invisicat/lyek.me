@@ -1,47 +1,68 @@
-# Astro Starter Kit: Minimal
+# lyek.me (Next.js + Bun + Convex)
 
-```sh
-npm create astro@latest -- --template minimal
+This project is now a Next.js App Router app using Bun, with Convex as the data backend for projects and WIP entries.
+
+## Stack
+
+- Next.js 16 (App Router)
+- React 19
+- Tailwind CSS
+- Convex
+- Bun package manager/runtime
+
+## Quick Start
+
+```bash
+bun install
+bun run dev
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+App runs at [http://localhost:3000](http://localhost:3000).
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Convex Setup (What you need to do)
 
-## 🚀 Project Structure
+1. Create a Convex project (or use an existing one):
+   ```bash
+   bunx convex dev
+   ```
+2. Add the generated Convex env vars to `.env.local`:
+   - `NEXT_PUBLIC_CONVEX_URL`
+   - `CONVEX_DEPLOYMENT`
+3. Add admin CMS env vars to `.env.local`:
+   - `ADMIN_PASSCODE`
+   - `ADMIN_SESSION_SECRET`
+4. Keep `bunx convex dev` running while developing.
+5. Seed CMS defaults:
+   ```bash
+   bun run seed:cms
+   ```
 
-Inside of your Astro project, you'll see the following folders and files:
+## Data Model
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+Convex schema is in:
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- `convex/schema.ts`
+- `convex/projects.ts`
+- `convex/wip.ts`
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Next server components fetch data via `lib/convex.ts`.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Commands
 
-## 🧞 Commands
+- `bun run dev` - Start Next dev server
+- `bun run build` - Production build
+- `bun run start` - Start production server
+- `bun run lint` - Run lint checks
+- `bun run convex:dev` - Run Convex dev
+- `bun run convex:codegen` - Generate Convex types (after Convex is configured)
+- `bun run import:projects` - Import projects from `data.csv`
+- `bun run seed:cms` - Seed categories, site content, and sort orders
 
-All commands are run from the root of the project, from a terminal:
+## CMS Admin
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- Visit `/admin/login` and sign in with `ADMIN_PASSCODE`.
+- Manage CMS content at `/admin`:
+  - projects (create, edit, delete, reorder using `sortOrder`)
+  - categories (create, edit, delete, visibility, order)
+  - WIP entries (create, edit, delete, order)
+  - structured homepage/projects copy
