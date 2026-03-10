@@ -6,7 +6,7 @@ import ThemeToggle from "@/components/base/ThemeToggle";
 
 export default function Sidebar() {
   return (
-    <aside className="flex flex-col py-10 md:py-20 md:pr-8">
+    <aside className="hidden flex-col py-10 md:flex md:py-20 md:pr-8">
       <Link
         href="/"
         className="sidebar-logo block h-12 w-12 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[var(--accent)]"

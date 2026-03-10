@@ -22,7 +22,7 @@ export default function WipSection({ items, heading = "In the works" }: Props) {
           >
             <div className="absolute top-1/2 left-[-3px] h-[5px] w-[5px] -translate-y-1/2 rounded-full bg-[var(--text-tertiary)] transition-colors duration-200 group-hover:bg-[var(--accent)]" />
 
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
               <Hammer
                 size={14}
                 className="shrink-0 text-[var(--text-tertiary)] transition-colors duration-200 group-hover:text-[var(--accent)]"
@@ -43,7 +43,7 @@ export default function WipSection({ items, heading = "In the works" }: Props) {
               {item.date ? <span className="font-mono text-xs text-[var(--text-tertiary)]">{item.date}</span> : null}
             </div>
 
-            {item.description ? <p className="mt-1 ml-[22px] text-sm text-[var(--text-secondary)]">{item.description}</p> : null}
+            {item.description ? <p className="mt-1 ml-6 text-sm text-[var(--text-secondary)]">{item.description}</p> : null}
           </div>
         ))}
       </div>

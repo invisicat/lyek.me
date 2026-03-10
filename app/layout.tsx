@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import Sidebar from "@/components/base/Sidebar";
+import MobileHeader from "@/components/base/MobileHeader";
 import BaseFooter from "@/components/base/BaseFooter";
 import ConvexProvider from "@/components/providers/ConvexProvider";
 import ThemeScript from "@/components/providers/ThemeScript";
@@ -41,14 +42,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      <body className="mx-auto flex min-h-screen max-w-6xl flex-col bg-[var(--bg)] px-5 text-[var(--text)] transition-colors duration-300 md:flex-row md:px-8">
+      <body className="mx-auto flex min-h-screen max-w-6xl flex-col bg-[var(--bg)] px-4 text-[var(--text)] transition-colors duration-300 md:flex-row md:px-8">
         <ThemeScript />
         <ConvexProvider>
+          <MobileHeader />
           <div className="mb-8 h-fit md:sticky md:top-0 md:mb-0 md:self-start">
             <Sidebar />
           </div>
           <div className="flex flex-1 flex-col md:pl-16 lg:pl-24">
-            <section className="w-full max-w-2xl flex-1 py-8 md:py-16">
+            <section className="w-full max-w-2xl flex-1 py-6 md:py-16">
               {children}
             </section>
             <BaseFooter />

@@ -50,11 +50,11 @@ export default function ThemeToggle() {
   };
 
   const baseClasses =
-    "rounded p-1.5 text-[var(--text-tertiary)] transition-colors duration-200 hover:text-[var(--text)]";
+    "inline-flex min-h-10 min-w-10 items-center justify-center rounded-md p-2 text-[var(--text-tertiary)] transition-colors duration-200 hover:text-[var(--text)]";
   const activeClasses = "text-[var(--accent)]";
 
   return (
-    <div className="mt-6 flex items-center gap-1">
+    <div className="mt-5 flex items-center gap-1">
       <button
         type="button"
         className={`${baseClasses} ${mode === "system" ? activeClasses : ""}`}

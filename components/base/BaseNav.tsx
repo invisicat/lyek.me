@@ -13,8 +13,8 @@ export default function BaseNav() {
   const pathname = usePathname();
 
   return (
-    <nav className="mt-12">
-      <ul className="flex flex-col gap-6">
+    <nav className="mt-8 md:mt-12">
+      <ul className="flex flex-col gap-4 md:gap-6">
         {links.map(({ href, label, target }) => {
           const isActive = pathname === href || pathname.startsWith(`${href}/`);
           return (
@@ -23,7 +23,7 @@ export default function BaseNav() {
                 href={href}
                 target={target}
                 className={[
-                  "font-serif text-xl relative inline-block transition-colors duration-200",
+                  "relative inline-flex min-h-11 items-center py-1 font-serif text-xl transition-colors duration-200",
                   "after:content-[''] after:absolute after:left-0 after:bottom-0 after:h-px after:bg-[var(--accent)] after:transition-all after:duration-300",
                   isActive
                     ? "text-[var(--text)] after:w-full"

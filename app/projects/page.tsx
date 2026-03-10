@@ -34,7 +34,7 @@ export default async function ProjectsPage() {
       <div className="stagger-1 animate-fade-in-up">
         <h1 className="font-serif text-4xl md:text-5xl">{content["projects.pageTitle"]}</h1>
 
-        <nav className="mt-8 flex items-center gap-4">
+        <nav className="mt-8 flex flex-wrap items-center gap-4">
           {categories.map((category) => (
             <a
               key={category.slug}

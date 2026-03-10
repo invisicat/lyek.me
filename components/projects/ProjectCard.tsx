@@ -17,7 +17,7 @@ export default function ProjectCard({ project }: Props) {
         href={project.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="group inline-flex items-center gap-2 transition-colors duration-200"
+        className="group inline-flex flex-wrap items-center gap-2 transition-colors duration-200"
       >
         {project.recent ? <Star size={14} className="shrink-0 text-[var(--accent)]" fill="currentColor" /> : null}
         <h3 className="text-base font-medium text-[var(--text)] transition-colors duration-200 group-hover:text-[var(--accent)]">
@@ -32,7 +32,7 @@ export default function ProjectCard({ project }: Props) {
           <ArrowUpRight size={14} className="shrink-0 text-[var(--text-tertiary)]" />
         )}
       </a>
-      <p className="mt-1 text-sm text-[var(--text-secondary)]">{project.description}</p>
+      <p className="mt-1 text-sm leading-relaxed text-[var(--text-secondary)]">{project.description}</p>
     </div>
   );
 }
