@@ -5,6 +5,7 @@ import MobileHeader from "@/components/base/MobileHeader";
 import BaseFooter from "@/components/base/BaseFooter";
 import ConvexProvider from "@/components/providers/ConvexProvider";
 import ThemeScript from "@/components/providers/ThemeScript";
+import JsonLd from "@/components/seo/JsonLd";
 import "@fontsource/instrument-serif/400.css";
 import "@fontsource-variable/plus-jakarta-sans";
 import "@fontsource-variable/jetbrains-mono";
@@ -35,6 +36,8 @@ export const metadata: Metadata = {
   },
 };
 
+const baseUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -44,6 +47,7 @@ export default function RootLayout({
     <html lang="en" className="dark">
       <body className="mx-auto flex min-h-screen max-w-6xl flex-col bg-[var(--bg)] px-4 text-[var(--text)] transition-colors duration-300 md:flex-row md:px-8">
         <ThemeScript />
+        <JsonLd baseUrl={baseUrl} />
         <ConvexProvider>
           <MobileHeader />
           <div className="mb-8 h-fit md:sticky md:top-0 md:mb-0 md:self-start">
