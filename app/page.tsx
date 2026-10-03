@@ -1,89 +1,67 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import ProjectCard from "@/components/projects/ProjectCard";
-import WipSection from "@/components/wip/WipSection";
 import { mergeSiteContent } from "@/lib/cmsDefaults";
-import {
-  getProjects,
-  getSiteContentEntries,
-  getWipProjects,
-} from "@/lib/convex";
+import { getProjects, getSiteContentEntries } from "@/lib/convex";
 
 export const dynamic = "force-dynamic";
 
 export default async function Home() {
-  const [allProjects, wipProjects, contentEntries] = await Promise.all([
+  const [allProjects, contentEntries] = await Promise.all([
     getProjects(),
-    getWipProjects(),
     getSiteContentEntries(),
   ]);
   const content = mergeSiteContent(contentEntries);
   const projects = allProjects
     .filter((project) => project.featured)
     .sort((a, b) => a.sortOrder - b.sortOrder)
-    .slice(0, 4);
+    .slice(0, 3);
 
   return (
-    <div className="flex flex-col">
-      <section className="animate-fade-in-up stagger-1">
-        <h1 className="font-serif text-5xl leading-tight md:text-6xl">
+    <div className="flex flex-col gap-10 sm:gap-12">
+      <section aria-labelledby="intro-heading">
+        <h1 id="intro-heading" className="text-3xl font-semibold tracking-tight">
           {content["home.heroTitle"]}
         </h1>
-      </section>
-
-      <section className="stagger-2 animate-fade-in-up mt-4">
-        <p className="text-lg text-(--text-secondary)">
-          {content["home.subtitle"]}
-        </p>
-      </section>
-
-      <section className="stagger-3 animate-fade-in-up mt-12 flex flex-col gap-5">
-        <p className="leading-relaxed text-[var(--text-secondary)]">
+        <p className="mt-4 text-[var(--text-secondary)]">
           {content["home.intro1"]}
         </p>
-        <p className="leading-relaxed text-[var(--text-secondary)]">
+        <p className="mt-3 text-[var(--text-secondary)]">
+          {content["home.subtitle"]}
+        </p>
+        <p className="mt-5 text-sm text-[var(--text-secondary)]">
+          {content["home.experience"]}
+        </p>
+      </section>
+
+      <section aria-labelledby="current-heading">
+        <h2 id="current-heading" className="text-base font-semibold">
+          {content["home.wipHeading"]}
+        </h2>
+        <p className="mt-3 text-[var(--text-secondary)]">
           {content["home.intro2"]}
         </p>
       </section>
 
-      <section className="stagger-4 animate-fade-in-up mt-16">
-        <WipSection items={wipProjects} heading={content["home.wipHeading"]} />
-      </section>
-
-      <section className="stagger-5 animate-fade-in-up mt-20">
-        <h2 className="mb-10 font-serif text-3xl">
-          {content["home.projectsHeading"]}
-        </h2>
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-          {projects.map((project) => (
-            <ProjectCard key={project._id ?? project.name} project={project} />
-          ))}
-        </div>
-        <div className="mt-10">
+      {projects.length > 0 ? (
+        <section aria-labelledby="projects-heading">
+          <h2 id="projects-heading" className="text-base font-semibold">
+            {content["home.projectsHeading"]}
+          </h2>
+          <ul className="mt-4 flex flex-col gap-5">
+            {projects.map((project) => (
+              <li key={project._id ?? project.name}>
+                <ProjectCard project={project} compact />
+              </li>
+            ))}
+          </ul>
           <Link
             href="/projects"
-            className="group inline-flex items-center gap-2 text-[var(--text-secondary)] transition-colors duration-200 hover:text-[var(--accent)]"
+            className="text-link mt-5 inline-block text-sm text-[var(--text-secondary)]"
           >
-            <span className="relative after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-[var(--accent)] after:transition-all after:duration-300 after:content-[''] group-hover:after:w-full">
-              {content["home.projectsCtaLabel"]}
-            </span>
-            <ArrowRight size={16} />
+            {content["home.projectsCtaLabel"]}
           </Link>
-        </div>
-      </section>
-
-      <section className="stagger-6 animate-fade-in-up mt-20">
-        <h2 className="mb-4 font-serif text-3xl">Get in touch</h2>
-        <p className="leading-relaxed text-(--text-secondary)">
-          Have something in mind or just want to say hi? Reach me at{" "}
-          <a
-            href="mailto:andy@lyek.me"
-            className="text-(--accent) underline decoration-(--accent)/30 underline-offset-4 transition-colors duration-200 hover:decoration-(--accent)"
-          >
-            andy@lyek.me
-          </a>
-        </p>
-      </section>
+        </section>
+      ) : null}
     </div>
   );
 }

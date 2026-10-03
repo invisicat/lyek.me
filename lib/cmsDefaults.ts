@@ -26,12 +26,13 @@ export const DEFAULT_CATEGORIES: ProjectCategory[] = [
 
 export const SITE_CONTENT_DEFAULTS: Record<string, string> = {
   "home.heroTitle": "Hello, I'm Andy.",
-  "home.subtitle": "Stanford - Electrical Engineering & CS",
-  "home.intro1": "I design and build backend systems and full stack software from web apps to infrastructure.",
+  "home.subtitle": "Outside of that, I like cooking, videography, and gaming.",
+  "home.intro1": "I'm studying Electrical Engineering and CS at Stanford. I make software and tinker with hardware.",
+  "home.experience": "Previously: MTS at Photon, SWE at polylabs.ai, and SWE at CraftiGames.",
   "home.intro2":
-    "As of Spring 2026, I'm currently working on a project to bring real-time AI video processing to affordable hardware for budget productions.",
-  "home.wipHeading": "In the works",
-  "home.projectsHeading": "Projects",
+    "Lately, I've been working on local video processing for small production crews and a custom dashcam, from the PCB to the firmware.",
+  "home.wipHeading": "These days",
+  "home.projectsHeading": "A few things I've made",
   "home.projectsCtaLabel": "All projects",
   "projects.pageTitle": "Projects",
   "projects.badgeRecent": "Recent",

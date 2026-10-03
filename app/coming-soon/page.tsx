@@ -7,8 +7,8 @@ export const metadata: Metadata = {
 
 export default function ComingSoonPage() {
   return (
-    <div className="stagger-1 animate-fade-in-up flex min-h-[50vh] flex-col items-start justify-center gap-6">
-      <h1 className="font-serif text-4xl md:text-5xl">Coming Soon</h1>
+    <div className="flex min-h-[50vh] flex-col items-start justify-center gap-6">
+      <h1 className="text-3xl font-semibold tracking-tight">Coming Soon</h1>
       <p className="text-[var(--text-secondary)]">This page is still brewing.</p>
       <Image
         src="https://http.cat/418"

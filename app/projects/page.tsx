@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Smartphone, Star } from "lucide-react";
 import ProjectCard from "@/components/projects/ProjectCard";
 import ProjectSection from "@/components/projects/ProjectSection";
 import { DEFAULT_CATEGORIES, mergeSiteContent } from "@/lib/cmsDefaults";
@@ -31,46 +30,33 @@ export default async function ProjectsPage() {
 
   return (
     <>
-      <div className="stagger-1 animate-fade-in-up">
-        <h1 className="font-serif text-4xl md:text-5xl">{content["projects.pageTitle"]}</h1>
+      <h1 className="text-3xl font-semibold tracking-tight">
+        {content["projects.pageTitle"]}
+      </h1>
+      <nav aria-label="Project categories" className="mt-5 flex flex-wrap gap-x-5 gap-y-2">
+        {categories.map((category) => (
+          <a
+            key={category.slug}
+            href={`#${category.slug}`}
+            className="text-link text-sm text-[var(--text-secondary)]"
+          >
+            {category.label}
+          </a>
+        ))}
+      </nav>
 
-        <nav className="mt-8 flex flex-wrap items-center gap-4">
-          {categories.map((category) => (
-            <a
-              key={category.slug}
-              href={`#${category.slug}`}
-              className="text-sm text-[var(--text-tertiary)] transition-colors duration-200 hover:text-[var(--accent)]"
-            >
-              {category.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="mt-6 flex items-center gap-5 text-xs text-[var(--text-tertiary)]">
-          <span className="flex items-center gap-1">
-            <Star size={12} className="text-[var(--accent)]" fill="currentColor" />
-            {content["projects.badgeRecent"]}
-          </span>
-          <span className="flex items-center gap-1">
-            <Smartphone size={12} className="text-[var(--text-secondary)]" />
-            {content["projects.badgeMobile"]}
-          </span>
-        </div>
-      </div>
-
-      <div className="mt-16 flex flex-col gap-20">
-        {categories.map((category, index) => (
-          <div key={category.slug} className={`stagger-${index + 2} animate-fade-in-up`}>
-            <ProjectSection
-              id={category.slug}
-              title={category.label}
-              description={category.description}
-            >
-              {withCategory(projects, category.slug).map((project) => (
-                <ProjectCard key={project._id ?? project.name} project={project} />
-              ))}
-            </ProjectSection>
-          </div>
+      <div className="mt-10 flex flex-col gap-10">
+        {categories.map((category) => (
+          <ProjectSection
+            key={category.slug}
+            id={category.slug}
+            title={category.label}
+            description={category.description}
+          >
+            {withCategory(projects, category.slug).map((project) => (
+              <ProjectCard key={project._id ?? project.name} project={project} />
+            ))}
+          </ProjectSection>
         ))}
       </div>
     </>

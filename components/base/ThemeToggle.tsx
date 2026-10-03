@@ -1,87 +1,80 @@
 "use client";
 
-import { Computer, Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 
 type ThemeMode = "light" | "dark" | "system";
 
-function applyTheme(mode: ThemeMode) {
-  const root = document.documentElement;
-  if (mode === "dark") {
-    root.classList.add("dark");
-  } else if (mode === "light") {
-    root.classList.remove("dark");
-  } else if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-    root.classList.add("dark");
-  } else {
-    root.classList.remove("dark");
+const themeChangeEvent = "site-theme-change";
+let unsavedMode: ThemeMode | undefined;
+
+function readTheme(): ThemeMode {
+  if (unsavedMode) return unsavedMode;
+  try {
+    const stored = localStorage.getItem("theme");
+    if (stored === "light" || stored === "dark" || stored === "system") return stored;
+  } catch {
+    // Keep the page usable when browser storage is unavailable.
   }
+  return "dark";
+}
+
+function applyTheme(mode: ThemeMode) {
+  const isDark = mode === "dark" || (
+    mode === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches
+  );
+  document.documentElement.classList.toggle("dark", isDark);
+}
+
+function subscribe(onChange: () => void) {
+  const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+  const syncTheme = () => {
+    applyTheme(readTheme());
+    onChange();
+  };
+  const onStorage = (event: StorageEvent) => {
+    if (event.key === "theme" || event.key === null) {
+      unsavedMode = undefined;
+      syncTheme();
+    }
+  };
+
+  syncTheme();
+  window.addEventListener(themeChangeEvent, syncTheme);
+  window.addEventListener("storage", onStorage);
+  mediaQuery.addEventListener("change", syncTheme);
+  return () => {
+    window.removeEventListener(themeChangeEvent, syncTheme);
+    window.removeEventListener("storage", onStorage);
+    mediaQuery.removeEventListener("change", syncTheme);
+  };
+}
+
+function setTheme(mode: ThemeMode) {
+  unsavedMode = mode;
+  try {
+    localStorage.setItem("theme", mode);
+    unsavedMode = undefined;
+  } catch {
+    // Apply the choice for this visit even if it cannot be saved.
+  }
+  window.dispatchEvent(new Event(themeChangeEvent));
 }
 
 export default function ThemeToggle() {
-  const [mode, setMode] = useState<ThemeMode>("system");
-
-  useEffect(() => {
-    const stored = localStorage.getItem("theme");
-    if (stored === "light" || stored === "dark" || stored === "system") {
-      setMode(stored);
-    }
-  }, []);
-
-  useEffect(() => {
-    applyTheme(mode);
-  }, [mode]);
-
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const onChange = () => {
-      if (mode === "system") {
-        applyTheme("system");
-      }
-    };
-
-    mediaQuery.addEventListener("change", onChange);
-    return () => mediaQuery.removeEventListener("change", onChange);
-  }, [mode]);
-
-  const setTheme = (nextMode: ThemeMode) => {
-    setMode(nextMode);
-    localStorage.setItem("theme", nextMode);
-  };
-
-  const baseClasses =
-    "inline-flex min-h-10 min-w-10 items-center justify-center rounded-md p-2 text-[var(--text-tertiary)] transition-colors duration-200 hover:text-[var(--text)]";
-  const activeClasses = "text-[var(--accent)]";
+  const mode = useSyncExternalStore(subscribe, readTheme, () => "dark");
 
   return (
-    <div className="mt-5 flex items-center gap-1">
-      <button
-        type="button"
-        className={`${baseClasses} ${mode === "system" ? activeClasses : ""}`}
-        title="System"
-        aria-label="System theme"
-        onClick={() => setTheme("system")}
+    <label className="inline-flex min-h-11 items-center gap-2">
+      <span>Theme</span>
+      <select
+        value={mode}
+        onChange={(event) => setTheme(event.target.value as ThemeMode)}
+        className="min-h-11 cursor-pointer rounded-none border-0 bg-[var(--bg)] py-1 pr-1 text-[var(--text-secondary)]"
       >
-        <Computer size={16} />
-      </button>
-      <button
-        type="button"
-        className={`${baseClasses} ${mode === "light" ? activeClasses : ""}`}
-        title="Light"
-        aria-label="Light theme"
-        onClick={() => setTheme("light")}
-      >
-        <Sun size={16} />
-      </button>
-      <button
-        type="button"
-        className={`${baseClasses} ${mode === "dark" ? activeClasses : ""}`}
-        title="Dark"
-        aria-label="Dark theme"
-        onClick={() => setTheme("dark")}
-      >
-        <Moon size={16} />
-      </button>
-    </div>
+        <option value="dark">Dark</option>
+        <option value="light">Light</option>
+        <option value="system">System</option>
+      </select>
+    </label>
   );
 }

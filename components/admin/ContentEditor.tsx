@@ -1,19 +1,18 @@
 import FormField from "@/components/admin/FormField";
 
 const HOME_FIELDS = [
-  { key: "home.heroTitle", label: "Hero Title", rows: 2 },
-  { key: "home.subtitle", label: "Subtitle", rows: 2 },
-  { key: "home.intro1", label: "Intro Paragraph 1", rows: 3 },
-  { key: "home.intro2", label: "Intro Paragraph 2", rows: 3 },
-  { key: "home.wipHeading", label: "WIP Heading", rows: 2 },
+  { key: "home.heroTitle", label: "Greeting", rows: 2 },
+  { key: "home.intro1", label: "Introduction", rows: 3 },
+  { key: "home.subtitle", label: "Interests", rows: 2 },
+  { key: "home.experience", label: "Previous Roles", rows: 3 },
+  { key: "home.wipHeading", label: "Current Update Heading", rows: 2 },
+  { key: "home.intro2", label: "Current Update", rows: 3 },
   { key: "home.projectsHeading", label: "Projects Heading", rows: 2 },
   { key: "home.projectsCtaLabel", label: "Projects CTA Label", rows: 2 },
 ] as const;
 
 const PROJECT_FIELDS = [
   { key: "projects.pageTitle", label: "Page Title", rows: 2 },
-  { key: "projects.badgeRecent", label: "Recent Badge Label", rows: 2 },
-  { key: "projects.badgeMobile", label: "Mobile Badge Label", rows: 2 },
 ] as const;
 
 interface Props {

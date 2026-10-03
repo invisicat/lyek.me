@@ -16,7 +16,10 @@ export default function WipManager({ items }: Props) {
   return (
     <div className="grid gap-4">
       <div className="flex items-center justify-between">
-        <p className="text-sm text-(--text-secondary)">Track in-progress work with optional links and timeline labels.</p>
+        <p className="text-sm text-(--text-secondary)">
+          Keep notes on in-progress work here. To change the homepage update, edit
+          Current Update in the Content tab.
+        </p>
         <button
           type="button"
           onClick={() => setAdding((value) => !value)}
