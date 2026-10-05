@@ -30,7 +30,7 @@ export default async function ProjectsPage() {
 
   return (
     <>
-      <h1 className="text-3xl font-semibold tracking-tight">
+      <h1 className="text-base font-medium tracking-tight">
         {content["projects.pageTitle"]}
       </h1>
       <nav aria-label="Project categories" className="mt-5 flex flex-wrap gap-x-5 gap-y-2">

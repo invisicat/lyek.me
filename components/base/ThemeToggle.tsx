@@ -15,7 +15,7 @@ function readTheme(): ThemeMode {
   } catch {
     // Keep the page usable when browser storage is unavailable.
   }
-  return "dark";
+  return "light";
 }
 
 function applyTheme(mode: ThemeMode) {
@@ -61,18 +61,18 @@ function setTheme(mode: ThemeMode) {
 }
 
 export default function ThemeToggle() {
-  const mode = useSyncExternalStore(subscribe, readTheme, () => "dark");
+  const mode = useSyncExternalStore(subscribe, readTheme, () => "light");
 
   return (
-    <label className="inline-flex min-h-11 items-center gap-2">
+    <label className="inline-flex min-h-6 items-center gap-1">
       <span>Theme</span>
       <select
         value={mode}
         onChange={(event) => setTheme(event.target.value as ThemeMode)}
-        className="min-h-11 cursor-pointer rounded-none border-0 bg-[var(--bg)] py-1 pr-1 text-[var(--text-secondary)]"
+        className="min-h-6 cursor-pointer rounded-none border-0 bg-[var(--bg)] py-1 pr-1 text-[var(--text-tertiary)]"
       >
-        <option value="dark">Dark</option>
         <option value="light">Light</option>
+        <option value="dark">Dark</option>
         <option value="system">System</option>
       </select>
     </label>

@@ -25,14 +25,14 @@ export const DEFAULT_CATEGORIES: ProjectCategory[] = [
 ];
 
 export const SITE_CONTENT_DEFAULTS: Record<string, string> = {
-  "home.heroTitle": "Hello, I'm Andy.",
-  "home.subtitle": "Outside of that, I like cooking, videography, and gaming.",
-  "home.intro1": "I'm studying Electrical Engineering and CS at Stanford. I make software and tinker with hardware.",
-  "home.experience": "Previously: MTS at Photon, SWE at polylabs.ai, and SWE at CraftiGames.",
+  "home.heroTitle": "Andy Lyek",
+  "home.subtitle": "I also like cooking, videography, and gaming.",
+  "home.intro1": "I study Electrical Engineering and CS at Stanford, and build software and hardware.",
+  "home.experience": "Previously: Photon (MTS), polylabs.ai (SWE), CraftiGames (SWE).",
   "home.intro2":
-    "Lately, I've been working on local video processing for small production crews and a custom dashcam, from the PCB to the firmware.",
+    "I'm working on local video processing for small production crews and building a custom dashcam, from the PCB to the firmware.",
   "home.wipHeading": "These days",
-  "home.projectsHeading": "A few things I've made",
+  "home.projectsHeading": "A few things I've made:",
   "home.projectsCtaLabel": "All projects",
   "projects.pageTitle": "Projects",
   "projects.badgeRecent": "Recent",

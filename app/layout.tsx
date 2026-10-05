@@ -5,7 +5,7 @@ import BaseFooter from "@/components/base/BaseFooter";
 import ConvexProvider from "@/components/providers/ConvexProvider";
 import ThemeScript from "@/components/providers/ThemeScript";
 import JsonLd from "@/components/seo/JsonLd";
-import "@fontsource-variable/plus-jakarta-sans";
+import "@fontsource-variable/inter";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -41,14 +41,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <body className="mx-auto flex min-h-screen w-full max-w-[62rem] flex-col px-6 text-[var(--text)] sm:px-8">
+    <html lang="en" suppressHydrationWarning>
+      <body className="mx-auto flex min-h-dvh w-full max-w-[34rem] flex-col px-6 pt-24 text-[var(--text)] sm:pt-[clamp(6rem,22vh,14rem)]">
         <ThemeScript />
         <JsonLd baseUrl={baseUrl} />
         <ConvexProvider>
           <a href="#main-content" className="skip-link">Skip to content</a>
           <BaseHeader />
-          <main id="main-content" className="pt-6 sm:pt-8" tabIndex={-1}>
+          <main id="main-content" className="pt-4" tabIndex={-1}>
             {children}
           </main>
           <BaseFooter />

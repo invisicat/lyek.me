@@ -1,33 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #fafafa;
-  --bg-surface: #f0f0f0;
-  --text: #171717;
-  --text-secondary: #525252;
-  --text-tertiary: #616161;
-  --border: #e5e5e5;
-  --accent: #292929;
-  --accent-dim: #525252;
+  --bg: #ffffff;
+  --bg-surface: #f6f7f5;
+  --text: #30312e;
+  --text-secondary: #686b65;
+  --text-tertiary: #73766f;
+  --border: #d9dbd7;
+  --accent: #30312e;
+  --accent-dim: #686b65;
 }
 
 .dark {
-  --bg: #0a0a0a;
-  --bg-surface: #161616;
-  --text: #f0f0f0;
-  --text-secondary: #b0b0b0;
-  --text-tertiary: #929292;
-  --border: #292929;
-  --accent: #e0e0e0;
-  --accent-dim: #b0b0b0;
+  --bg: #161715;
+  --bg-surface: #20211e;
+  --text: #e9ebe7;
+  --text-secondary: #aaada6;
+  --text-tertiary: #a0a39c;
+  --border: #343631;
+  --accent: #e9ebe7;
+  --accent-dim: #aaada6;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
-  font-size: 15px;
-  line-height: 1.75;
+  font-family: "Inter Variable", ui-sans-serif, system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
   overflow-wrap: break-word;
 }
 

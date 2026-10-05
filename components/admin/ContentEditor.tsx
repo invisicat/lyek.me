@@ -7,7 +7,7 @@ const HOME_FIELDS = [
   { key: "home.experience", label: "Previous Roles", rows: 3 },
   { key: "home.wipHeading", label: "Current Update Heading", rows: 2 },
   { key: "home.intro2", label: "Current Update", rows: 3 },
-  { key: "home.projectsHeading", label: "Projects Heading", rows: 2 },
+  { key: "home.projectsHeading", label: "Projects Introduction", rows: 2 },
   { key: "home.projectsCtaLabel", label: "Projects CTA Label", rows: 2 },
 ] as const;
 
