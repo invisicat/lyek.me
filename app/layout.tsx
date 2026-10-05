@@ -42,13 +42,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark" suppressHydrationWarning>
-      <body className="mx-auto flex min-h-screen w-full max-w-[44rem] flex-col px-6 text-[var(--text)] sm:px-8">
+      <body className="mx-auto flex min-h-screen w-full max-w-[62rem] flex-col px-6 text-[var(--text)] sm:px-8">
         <ThemeScript />
         <JsonLd baseUrl={baseUrl} />
         <ConvexProvider>
           <a href="#main-content" className="skip-link">Skip to content</a>
           <BaseHeader />
-          <main id="main-content" className="flex-1 pt-10 sm:pt-14" tabIndex={-1}>
+          <main id="main-content" className="pt-6 sm:pt-8" tabIndex={-1}>
             {children}
           </main>
           <BaseFooter />
