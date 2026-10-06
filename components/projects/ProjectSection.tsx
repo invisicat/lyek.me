@@ -1,18 +1,16 @@
-import { ReactNode } from "react";
+import type { ReactNode } from "react";
 
 interface Props {
   id: string;
   title: string;
-  description: string;
   children: ReactNode;
 }
 
-export default function ProjectSection({ id, title, description, children }: Props) {
+export default function ProjectSection({ id, title, children }: Props) {
   return (
-    <section id={id} className="scroll-mt-24 md:scroll-mt-16">
-      <h2 className="text-sm font-medium">{title}</h2>
-      <p className="mt-1 mb-5 max-w-xl text-sm text-[var(--text-secondary)]">{description}</p>
-      <div className="flex flex-col gap-5">{children}</div>
+    <section id={id} aria-labelledby={`${id}-heading`} className="scroll-mt-8">
+      <h2 id={`${id}-heading`} className="text-sm font-medium text-[var(--text-secondary)]">{title}</h2>
+      <div className="mt-4 flex flex-col gap-5">{children}</div>
     </section>
   );
 }

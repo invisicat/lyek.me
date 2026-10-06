@@ -22,6 +22,8 @@ const HOME_FIELDS = [
 
 const PROJECT_FIELDS = [
   { key: "projects.pageTitle", label: "Page Title", rows: 2 },
+  { key: "projects.intro", label: "Introduction", rows: 2 },
+  { key: "projects.selectedHeading", label: "Selected Projects Heading", rows: 2 },
 ] as const;
 
 interface Props {

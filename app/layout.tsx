@@ -42,7 +42,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="mx-auto flex min-h-dvh w-full max-w-[34rem] flex-col px-6 pt-24 text-[var(--text)] sm:pt-[clamp(6rem,22vh,14rem)]">
+      <body className="mx-auto flex min-h-dvh w-full max-w-[34rem] flex-col px-6 pt-24 text-[var(--text)] sm:pt-[clamp(6rem,22vh,14rem)] has-[.projects-page]:max-w-[46rem] has-[.projects-page]:pt-12 sm:has-[.projects-page]:pt-16">
         <ThemeScript />
         <JsonLd baseUrl={baseUrl} />
         <ConvexProvider>

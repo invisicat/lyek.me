@@ -39,6 +39,8 @@ export const SITE_CONTENT_DEFAULTS: Record<string, string> = {
   "home.projectTag2meSummary": "Tag and describe videos from social media.",
   "home.projectsCtaLabel": "All projects",
   "projects.pageTitle": "Projects",
+  "projects.intro": "A few things I've built, from video tools to Minecraft plugins.",
+  "projects.selectedHeading": "Selected",
   "projects.badgeRecent": "Recent",
   "projects.badgeMobile": "Mobile",
 };
