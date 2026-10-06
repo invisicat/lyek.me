@@ -7,6 +7,14 @@ interface LegacyCopy {
 }
 
 const legacyCopy: Readonly<Record<string, LegacyCopy>> = {
+  "ICS Filter": {
+    descriptions: ["Allows you to filter out specific events from your calendar."],
+    description: "Filter unwanted events out of calendar feeds.",
+  },
+  RiceStats: {
+    descriptions: ["Tracks Minecraft statistics with InfluxDB for timescale analytics as a Spigot plugin"],
+    description: "Track Minecraft player activity and server performance.",
+  },
   "Frostless Network": {
     descriptions: [
       "My Minecraft server with over 200+ members. Self maintained infra with Docker, Grafana, Pterodactyl etc.",

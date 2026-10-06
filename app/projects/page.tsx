@@ -4,8 +4,8 @@ import ProjectCard from "@/components/projects/ProjectCard";
 import ProjectSection from "@/components/projects/ProjectSection";
 import { DEFAULT_CATEGORIES, mergeSiteContent } from "@/lib/cmsDefaults";
 import { getProjectCategories, getProjects, getSiteContentEntries, getWipProjects } from "@/lib/convex";
-import { getHomeProjects } from "@/lib/homeProjects";
 import { getProjectCopy } from "@/lib/projectCopy";
+import type { Project } from "@/lib/types";
 
 export const dynamic = "force-dynamic";
 
@@ -13,8 +13,9 @@ export const metadata: Metadata = {
   title: "Projects - Andy Lyek",
 };
 
-function normalizeLink(link: string) {
-  return link.replace(/\/$/, "");
+function isTag2me(project: { name: string; link: string }) {
+  return project.name.trim().toLowerCase().split(" - ")[0] === "tag2me"
+    || /^https?:\/\/(www\.)?tag2me\.app\/?$/i.test(project.link);
 }
 
 export default async function ProjectsPage() {
@@ -30,14 +31,27 @@ export default async function ProjectsPage() {
       .sort((a, b) => a.sortOrder - b.sortOrder);
   const content = mergeSiteContent(contentEntries);
   const visibleCategories = new Set(categories.map((category) => category.slug));
-  const selected = getHomeProjects(projectList, wipProjects, content).filter((project) =>
-    !projectList.some((record) =>
-      normalizeLink(record.link) === normalizeLink(project.link) && !visibleCategories.has(record.categorySlug),
-    ),
-  );
-  const selectedLinks = new Set(selected.map((project) => normalizeLink(project.link)));
-  const projects = projectList
-    .filter((project) => visibleCategories.has(project.categorySlug) && !selectedLinks.has(normalizeLink(project.link)))
+  const tag2me = wipProjects.find(isTag2me);
+  const tag2meSummary = content["home.projectTag2meSummary"];
+  const archive: Project[] = [...projectList];
+  if (!projectList.some(isTag2me)) {
+    archive.push({
+      name: "tag2me",
+      description: tag2meSummary,
+      descriptionShort: tag2meSummary,
+      link: tag2me?.link || "https://tag2me.app",
+      linkType: "website",
+      categorySlug: "web",
+      recent: true,
+      featured: true,
+      sortOrder: Number.MAX_SAFE_INTEGER,
+      tags: [],
+      icons: [],
+      variant: "Short",
+    });
+  }
+  const projects = archive
+    .filter((project) => visibleCategories.has(project.categorySlug))
     .sort((a, b) => a.sortOrder - b.sortOrder || Number(b.recent) - Number(a.recent));
   const sections = categories
     .map((category) => ({
@@ -59,13 +73,6 @@ export default async function ProjectsPage() {
       <p className="mt-2 text-[var(--text-secondary)]">{content["projects.intro"]}</p>
 
       <div className="mt-9 flex flex-col gap-10">
-        {selected.length > 0 ? (
-          <ProjectSection id="selected" title={content["projects.selectedHeading"]}>
-            {selected.map((project) => (
-              <ProjectCard key={project.name} project={project} />
-            ))}
-          </ProjectSection>
-        ) : null}
         {sections.map((category) => (
           <ProjectSection
             key={category.slug}
