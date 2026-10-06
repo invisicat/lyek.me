@@ -1,7 +1,10 @@
 export default function ThemeScript() {
   const script = `
     (function() {
-      const theme = localStorage.getItem("theme") || "system";
+      let theme = "light";
+      try {
+        theme = localStorage.getItem("theme") || "light";
+      } catch {}
       const root = document.documentElement;
       const setTheme = function(mode) {
         if (mode === "dark") {

@@ -1,19 +1,28 @@
 import FormField from "@/components/admin/FormField";
 
 const HOME_FIELDS = [
-  { key: "home.heroTitle", label: "Hero Title", rows: 2 },
-  { key: "home.subtitle", label: "Subtitle", rows: 2 },
-  { key: "home.intro1", label: "Intro Paragraph 1", rows: 3 },
-  { key: "home.intro2", label: "Intro Paragraph 2", rows: 3 },
-  { key: "home.wipHeading", label: "WIP Heading", rows: 2 },
-  { key: "home.projectsHeading", label: "Projects Heading", rows: 2 },
+  { key: "home.heroTitle", label: "Greeting", rows: 2 },
+  { key: "home.intro1", label: "Introduction", rows: 3 },
+  { key: "home.subtitle", label: "Interests", rows: 2 },
+  { key: "home.experience", label: "Previous Roles", rows: 3 },
+  { key: "home.wipHeading", label: "Current Update Heading", rows: 2 },
+  { key: "home.intro2", label: "Current Update", rows: 3 },
+  { key: "home.projectsHeading", label: "Projects Introduction", rows: 2 },
+  {
+    key: "home.featuredProjects",
+    label: "Homepage Projects",
+    rows: 2,
+    hint: "Comma-separated names in display order. Leave empty to use projects marked Featured on home.",
+  },
+  { key: "home.projectIcsSummary", label: "ICS Filter Summary", rows: 2 },
+  { key: "home.projectRiceStatsSummary", label: "RiceStats Summary", rows: 2 },
+  { key: "home.projectTag2meSummary", label: "tag2me Summary", rows: 2 },
   { key: "home.projectsCtaLabel", label: "Projects CTA Label", rows: 2 },
 ] as const;
 
 const PROJECT_FIELDS = [
   { key: "projects.pageTitle", label: "Page Title", rows: 2 },
-  { key: "projects.badgeRecent", label: "Recent Badge Label", rows: 2 },
-  { key: "projects.badgeMobile", label: "Mobile Badge Label", rows: 2 },
+  { key: "projects.intro", label: "Introduction", rows: 2 },
 ] as const;
 
 interface Props {
@@ -31,6 +40,7 @@ export default function ContentEditor({ content }: Props) {
               key={field.key}
               type="textarea"
               label={field.label}
+              hint={"hint" in field ? field.hint : undefined}
               textareaProps={{
                 name: `content:${field.key}`,
                 defaultValue: content[field.key] ?? "",

@@ -25,15 +25,21 @@ export const DEFAULT_CATEGORIES: ProjectCategory[] = [
 ];
 
 export const SITE_CONTENT_DEFAULTS: Record<string, string> = {
-  "home.heroTitle": "Hello, I'm Andy.",
-  "home.subtitle": "Stanford - Electrical Engineering & CS",
-  "home.intro1": "I design and build backend systems and full stack software from web apps to infrastructure.",
+  "home.heroTitle": "Andy Lyek",
+  "home.subtitle": "I also like cooking, videography, and gaming.",
+  "home.intro1": "I study Electrical Engineering and CS at Stanford, building software and hardware.",
+  "home.experience": "Previously: Photon (MTS), polylabs.ai (SWE), CraftiGames (SWE).",
   "home.intro2":
-    "As of Spring 2026, I'm currently working on a project to bring real-time AI video processing to affordable hardware for budget productions.",
-  "home.wipHeading": "In the works",
-  "home.projectsHeading": "Projects",
+    "I'm working on local video processing for small production crews and building a custom dashcam, from the PCB to the firmware.",
+  "home.wipHeading": "These days",
+  "home.projectsHeading": "A few things I've made:",
+  "home.featuredProjects": "ICS Filter, RiceStats, tag2me",
+  "home.projectIcsSummary": "Filter unwanted events out of calendar feeds.",
+  "home.projectRiceStatsSummary": "Track Minecraft player activity and server performance.",
+  "home.projectTag2meSummary": "Tag and describe videos from social media.",
   "home.projectsCtaLabel": "All projects",
   "projects.pageTitle": "Projects",
+  "projects.intro": "A few things I've built, from video tools to Minecraft plugins.",
   "projects.badgeRecent": "Recent",
   "projects.badgeMobile": "Mobile",
 };
