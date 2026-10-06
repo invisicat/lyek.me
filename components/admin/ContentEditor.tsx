@@ -8,6 +8,15 @@ const HOME_FIELDS = [
   { key: "home.wipHeading", label: "Current Update Heading", rows: 2 },
   { key: "home.intro2", label: "Current Update", rows: 3 },
   { key: "home.projectsHeading", label: "Projects Introduction", rows: 2 },
+  {
+    key: "home.featuredProjects",
+    label: "Homepage Projects",
+    rows: 2,
+    hint: "Comma-separated names in display order. Leave empty to use projects marked Featured on home.",
+  },
+  { key: "home.projectIcsSummary", label: "ICS Filter Summary", rows: 2 },
+  { key: "home.projectRiceStatsSummary", label: "RiceStats Summary", rows: 2 },
+  { key: "home.projectTag2meSummary", label: "tag2me Summary", rows: 2 },
   { key: "home.projectsCtaLabel", label: "Projects CTA Label", rows: 2 },
 ] as const;
 
@@ -30,6 +39,7 @@ export default function ContentEditor({ content }: Props) {
               key={field.key}
               type="textarea"
               label={field.label}
+              hint={"hint" in field ? field.hint : undefined}
               textareaProps={{
                 name: `content:${field.key}`,
                 defaultValue: content[field.key] ?? "",

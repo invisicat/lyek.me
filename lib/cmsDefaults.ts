@@ -27,12 +27,16 @@ export const DEFAULT_CATEGORIES: ProjectCategory[] = [
 export const SITE_CONTENT_DEFAULTS: Record<string, string> = {
   "home.heroTitle": "Andy Lyek",
   "home.subtitle": "I also like cooking, videography, and gaming.",
-  "home.intro1": "I study Electrical Engineering and CS at Stanford, and build software and hardware.",
+  "home.intro1": "I study Electrical Engineering and CS at Stanford, building software and hardware.",
   "home.experience": "Previously: Photon (MTS), polylabs.ai (SWE), CraftiGames (SWE).",
   "home.intro2":
     "I'm working on local video processing for small production crews and building a custom dashcam, from the PCB to the firmware.",
   "home.wipHeading": "These days",
   "home.projectsHeading": "A few things I've made:",
+  "home.featuredProjects": "ICS Filter, RiceStats, tag2me",
+  "home.projectIcsSummary": "Filter unwanted events out of calendar feeds.",
+  "home.projectRiceStatsSummary": "Track Minecraft player activity and server performance.",
+  "home.projectTag2meSummary": "Tag and describe videos from social media.",
   "home.projectsCtaLabel": "All projects",
   "projects.pageTitle": "Projects",
   "projects.badgeRecent": "Recent",
